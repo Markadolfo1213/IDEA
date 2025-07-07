@@ -1,0 +1,27 @@
+[build]
+command = "composer install && composer dump-autoload"
+
+[deploy]
+web = "php -S 0.0.0.0:${PORT} index.php"
+
+[env]
+DB_HOST = "${DATABASE_HOST}"
+DB_NAME = "${DATABASE_NAME}"
+DB_USER = "${DATABASE_USER}"
+DB_PASS = "${DATABASE_PASSWORD}"
+PORT = "3000"
+
+[variables]
+DATABASE_HOST = "localhost"
+DATABASE_NAME = "railway"
+DATABASE_USER = "root"
+DATABASE_PASSWORD = ""
+
+[database]
+image = "mysql:8.0"
+env = {
+    MYSQL_ROOT_PASSWORD = "${MYSQL_ROOT_PASSWORD}"
+    MYSQL_DATABASE = "${DATABASE_NAME}"
+    MYSQL_USER = "${DATABASE_USER}"
+    MYSQL_PASSWORD = "${DATABASE_PASSWORD}"
+}
